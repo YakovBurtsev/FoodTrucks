@@ -1,7 +1,7 @@
 version: '2'
 services:
   es:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.2
     cpu_shares: 100
     mem_limit: 3621440000
     environment:
@@ -15,7 +15,7 @@ services:
         awslogs-region: us-east-1
         awslogs-stream-prefix: es
   web:
-    image: prakhar1989/foodtrucks-web
+    image: yakovburtsev/foodtrucks-web
     cpu_shares: 100
     mem_limit: 262144000
     ports:
