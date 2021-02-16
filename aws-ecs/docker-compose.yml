@@ -3,17 +3,11 @@ services:
   es:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.10.2
     cpu_shares: 100
-    mem_limit: 3621440000
+    mem_limit: 754288000
     environment:
       - discovery.type=single-node
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: foodtrucks
-        awslogs-region: us-east-1
-        awslogs-stream-prefix: es
+      - "ES_JAVA_OPTS=-Xms256m -Xmx650m"
   web:
     image: yakovburtsev/foodtrucks-web
     cpu_shares: 100
@@ -22,9 +16,3 @@ services:
       - "80:5000"
     links:
       - es
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: foodtrucks
-        awslogs-region: us-east-1
-        awslogs-stream-prefix: web
